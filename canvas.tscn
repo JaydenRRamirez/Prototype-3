@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bygnjuhg8i3ds"]
+
+[ext_resource type="Script" uid="uid://6e72w75mgnyr" path="res://Prototype-3/painter_image.gd" id="1_c17on"]
+
+[node name="Canvas" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PainterImage" type="Sprite2D" parent="CanvasLayer"]
+script = ExtResource("1_c17on")
