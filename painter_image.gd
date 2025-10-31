@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var paint_color : Color = Color.RED
-@export var img_size := Vector2i(120, 170)
+@export var img_size := Vector2i(1000, 800)
 @export var brush_size := 3
 
 var img : Image
