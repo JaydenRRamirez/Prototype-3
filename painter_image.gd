@@ -22,3 +22,21 @@ func _input(event: InputEvent) -> void:
 			
 			_paint_tex(impos)
 			texture.update(img)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			var lpos = to_local(event.position)
+			var impos = lpos-offset+get_rect().size/2.0
+			paint_color = img.get_pixelv(impos)
+			
+	if event is InputEventMouseMotion:
+		if event.button_mask == MOUSE_BUTTON_LEFT:
+			var lpos = to_local(event.position)
+			var impos = lpos-offset+get_rect().size/2.0
+			
+			if event.relative.length_squared() > 0:
+				var num := ceili(event.relative.length())
+				var target_pos = impos - (event.relative)
+				for i in num:
+					impos = impos.move_toward(target_pos, 1.0)
+					_paint_tex(impos)
+			
+			texture.update(img)
