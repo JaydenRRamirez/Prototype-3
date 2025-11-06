@@ -1,10 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bygnjuhg8i3ds"]
+[gd_scene load_steps=7 format=3 uid="uid://bygnjuhg8i3ds"]
 
+[ext_resource type="Texture2D" uid="uid://bl3e6ptwas0va" path="res://Prototype-3/electric-kettle-modern-tea-teakettle-600nw-2456439763.jpg.webp" id="1_1jdtg"]
 [ext_resource type="Script" uid="uid://6e72w75mgnyr" path="res://Prototype-3/painter_image.gd" id="1_c17on"]
+[ext_resource type="Script" uid="uid://bvoikplkbbxji" path="res://Prototype-3/canvas.gd" id="1_d4pke"]
+[ext_resource type="Shader" uid="uid://g3aenlefg0wl" path="res://Prototype-3/canvas.gdshader" id="1_l1xkv"]
+[ext_resource type="Texture2D" uid="uid://o68dvttb5ffl" path="res://Prototype-3/rust2.png" id="3_jh1xo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jdtg"]
+shader = ExtResource("1_l1xkv")
+shader_parameter/rust_color = Color(0.58, 0.28, 0, 1)
+shader_parameter/alpha_mask = ExtResource("3_jh1xo")
 
 [node name="Canvas" type="Node2D"]
+script = ExtResource("1_d4pke")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CleanKettle" type="Sprite2D" parent="."]
+texture = ExtResource("1_1jdtg")
+centered = false
+region_rect = Rect2(0, 0, 599.43, 600)
 
-[node name="PainterImage" type="Sprite2D" parent="CanvasLayer"]
+[node name="RustOverlay" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1jdtg")
+texture = ExtResource("3_jh1xo")
+centered = false
+
+[node name="PainterImage" type="Sprite2D" parent="RustOverlay"]
+centered = false
 script = ExtResource("1_c17on")
+kettle_mask_texture = ExtResource("3_jh1xo")
